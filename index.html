@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Makaa — open-fire kitchen, Kilimani, Nairobi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Schibsted+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#14100d;--ink2:#1d1814;--paper:#efe6d8;--ash:#9a8f82;--ember:#e2531f;--line:rgba(239,230,216,.16);
+--serif:'Fraunces',Georgia,serif;--sans:'Schibsted Grotesk',system-ui,sans-serif;color-scheme:dark;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-behavior:smooth;height:100%;scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--ink);color:var(--paper);font:400 1.0625rem/1.6 var(--sans);-webkit-font-smoothing:antialiased}
+a{color:inherit}button{font:inherit;color:inherit;cursor:pointer}
+.wrap{max-width:1180px;margin:0 auto;padding:0 clamp(1.1rem,4vw,2.5rem)}
+.eyebrow{font:500 .78rem/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--ash)}
+h2{font:300 clamp(2.2rem,5.5vw,4.4rem)/1.04 var(--serif);letter-spacing:-.02em;margin:.6rem 0 0}
+h2 em,.logo em{font-style:italic;color:var(--ember)}
+/* hero */
+.hero{position:relative;min-height:100svh;display:flex;flex-direction:column;overflow:hidden;isolation:isolate}
+.hero video,.hero canvas,.hero .scrim{position:absolute;inset:0;width:100%;height:100%}
+.hero video{object-fit:cover;opacity:.42;z-index:-3;filter:saturate(.7) contrast(1.1)}
+.hero .scrim{z-index:-2;background:radial-gradient(120% 70% at 50% 110%,rgba(226,83,31,.38),transparent 60%),linear-gradient(180deg,rgba(20,16,13,.7),rgba(20,16,13,.35) 40%,var(--ink))}
+.hero canvas{z-index:-1;pointer-events:none}
+nav{display:flex;justify-content:space-between;align-items:center;padding:1.4rem 0}
+.logo{font:500 1.35rem var(--serif);text-decoration:none;letter-spacing:-.01em}
+nav ul{display:flex;gap:clamp(1rem,3vw,2.2rem);list-style:none;margin:0;padding:0;font-size:.95rem}
+nav a{text-decoration:none;opacity:.85}nav a:hover{opacity:1;color:var(--ember)}
+.hero-body{margin-top:auto;padding-bottom:clamp(1.5rem,4vh,3rem)}
+.word{font:300 clamp(5.5rem,27vw,23rem)/.8 var(--serif);letter-spacing:-.055em;margin:0 0 0 -.04em;font-variation-settings:"opsz" 144}
+.word i{color:var(--ember);font-weight:300}
+.hero-row{display:flex;flex-wrap:wrap;gap:1.2rem 2.5rem;justify-content:space-between;align-items:flex-end;border-top:1px solid var(--line);margin-top:1.6rem;padding-top:1.3rem}
+.hero-row p{margin:0;max-width:34ch;font-size:1.15rem}
+.status{display:inline-flex;align-items:center;gap:.55rem;font-size:.92rem;color:var(--ash);margin-top:.7rem}
+.dot{width:.55rem;height:.55rem;border-radius:50%;background:var(--ash)}
+.status.open .dot{background:#6fcf7f;box-shadow:0 0 0 4px rgba(111,207,127,.18)}
+.btns{display:flex;gap:.8rem;flex-wrap:wrap}
+.btn{display:inline-block;padding:.95rem 1.5rem;border:1px solid var(--paper);border-radius:999px;text-decoration:none;font-weight:500;background:none;transition:.2s}
+.btn.solid{background:var(--ember);border-color:var(--ember);color:#fff}
+.btn:hover{transform:translateY(-2px)}.btn.solid:hover{background:#f06a35}
+.btn:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--ember);outline-offset:3px}
+/* story */
+section{padding:clamp(4.5rem,11vw,9rem) 0}
+.story{display:grid;grid-template-columns:1.25fr 1fr;gap:clamp(2rem,6vw,6rem);align-items:start}
+.story p{color:#cfc5b6;margin:0 0 1.1rem;max-width:46ch}
+dl{margin:2rem 0 0;border-top:1px solid var(--line)}
+dl div{display:flex;justify-content:space-between;gap:1rem;padding:.85rem 0;border-bottom:1px solid var(--line)}
+dt{color:var(--ash)}dd{margin:0;text-align:right}
+/* menu */
+.menu{background:var(--ink2);border-block:1px solid var(--line)}
+.mhead{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1.5rem;align-items:end;margin-bottom:2.2rem}
+.tabs,.chips{display:flex;gap:.4rem;flex-wrap:wrap}
+.tab{background:none;border:0;border-bottom:2px solid transparent;padding:.5rem .1rem;margin-right:1.2rem;font:300 1.7rem var(--serif);color:var(--ash)}
+.tab[aria-selected=true]{color:var(--paper);border-color:var(--ember)}
+.chip{background:none;border:1px solid var(--line);border-radius:999px;padding:.4rem .95rem;font-size:.88rem;color:var(--ash)}
+.chip[aria-pressed=true]{border-color:var(--paper);color:var(--paper)}
+.mgrid{display:grid;grid-template-columns:1fr 330px;gap:clamp(1.5rem,5vw,4rem);align-items:start}
+.item{display:grid;grid-template-columns:1fr auto;gap:.2rem 1.2rem;padding:1.2rem 0;border-bottom:1px solid var(--line);animation:in .35s both}
+@keyframes in{from{opacity:0;transform:translateY(8px)}}
+.item h3{font:400 1.35rem/1.2 var(--serif);margin:0;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.item p{margin:.2rem 0 0;color:var(--ash);font-size:.95rem;grid-column:1}
+.price{font:400 1.15rem var(--serif);text-align:right;white-space:nowrap}
+.add{grid-column:2;grid-row:2;justify-self:end;align-self:end;width:2.2rem;height:2.2rem;border:1px solid var(--line);border-radius:50%;background:none;font-size:1.2rem;line-height:1;transition:.2s}
+.add:hover{background:var(--ember);border-color:var(--ember)}
+.tag{font:500 .66rem var(--sans);letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--ash);color:var(--ash);border-radius:4px;padding:.12rem .38rem}
+.heat{display:inline-flex;gap:3px}.heat b{width:.42rem;height:.42rem;border-radius:50%;background:var(--ember)}.heat b.off{background:var(--line)}
+aside.table{position:sticky;top:1.2rem;border:1px solid var(--line);border-radius:14px;padding:1.4rem;background:var(--ink)}
+aside h3{font:300 1.6rem var(--serif);margin:0 0 .2rem}
+aside .empty{color:var(--ash);font-size:.95rem}
+.line{display:flex;align-items:center;gap:.6rem;padding:.55rem 0;border-bottom:1px dashed var(--line);font-size:.95rem}
+.line span:first-child{flex:1}
+.q{display:inline-flex;align-items:center;gap:.3rem}.q button{width:1.5rem;height:1.5rem;border-radius:50%;border:1px solid var(--line);background:none;line-height:1}
+.total{display:flex;justify-content:space-between;font:400 1.3rem var(--serif);margin:1rem 0}
+.link{background:none;border:0;color:var(--ash);text-decoration:underline;font-size:.85rem;padding:0;margin-top:.6rem}
+/* hours */
+.hours{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,6vw,6rem)}
+.hours ul{list-style:none;margin:0;padding:0}
+.hours li{display:flex;justify-content:space-between;gap:1rem;padding:.8rem 0;border-bottom:1px solid var(--line);color:var(--ash)}
+.hours li.today{color:var(--paper)}.hours li.today span:first-child::before{content:"→ ";color:var(--ember)}
+address{font-style:normal;margin-top:1.6rem;color:#cfc5b6}
+/* reserve */
+.reserve{background:var(--paper);color:var(--ink)}
+.reserve .eyebrow{color:#6d6256}.reserve h2 em{color:#c23f10}
+.rgrid{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(2rem,6vw,6rem)}
+form{display:grid;gap:1.1rem}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem}
+label{display:grid;gap:.4rem;font-size:.82rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:#5a5047}
+input,select{font:400 1.05rem var(--sans);padding:.8rem .9rem;border:1px solid #bdb09d;border-radius:8px;background:#f7f1e7;color:var(--ink);width:100%}
+.step{display:flex;align-items:center;gap:.8rem;font-size:1.2rem}.step button{width:2.6rem;height:2.6rem;border-radius:50%;border:1px solid #bdb09d;background:#f7f1e7;color:var(--ink);font-size:1.2rem}
+.slots{display:flex;flex-wrap:wrap;gap:.45rem}
+.slot{padding:.5rem .85rem;border:1px solid #bdb09d;border-radius:8px;background:#f7f1e7;color:var(--ink);font-size:.95rem}
+.slot[aria-pressed=true]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.hint{font-size:.9rem;color:#6d6256;margin:0}.err{color:#b3300a}
+.reserve .btn{border-color:var(--ink);color:var(--ink)}.reserve .btn.solid{background:var(--ink);color:var(--paper)}
+.done{border:1px solid var(--ink);border-radius:14px;padding:2rem}.done h3{font:300 2rem var(--serif);margin:0 0 .6rem}
+footer{padding:2.5rem 0 3rem;color:var(--ash);font-size:.9rem}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem}
+.rv{opacity:0;transform:translateY(18px);transition:opacity .8s,transform .8s}.rv.on{opacity:1;transform:none}
+@media(max-width:860px){.story,.mgrid,.hours,.rgrid{grid-template-columns:1fr}aside.table{position:static}nav ul li:nth-child(n+3){display:none}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<header class="hero" id="top">
+  <video id="bgv" muted loop playsinline autoplay preload="auto" aria-hidden="true"></video>
+  <div class="scrim"></div><canvas id="embers" aria-hidden="true"></canvas>
+  <div class="wrap" style="display:flex;flex-direction:column;flex:1;width:100%">
+    <nav><a class="logo" href="#top">Makaa</a>
+      <ul><li><a href="#menu">Menu</a></li><li><a href="#hours">Hours</a></li><li><a href="#reserve">Reserve</a></li></ul></nav>
+    <div class="hero-body">
+      <h1 class="word">Mak<i>aa</i></h1>
+      <div class="hero-row">
+        <div><p>One grill, no gas hob, twenty-four seats. Kenyan fire cooking in Kilimani.</p>
+          <div class="status" id="status"><span class="dot"></span><span>Checking hours…</span></div></div>
+        <div class="btns"><a class="btn solid" href="#reserve">Reserve a seat</a><a class="btn" href="#menu">Read the menu</a></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+<section><div class="wrap story">
+  <div class="rv"><span class="eyebrow">The kitchen</span>
+    <h2>Makaa is Swahili for charcoal. Everything here <em>touches it.</em></h2></div>
+  <div class="rv"><p>We cook goat, fish and vegetables over a single charcoal grill and let the fire set the pace. Tamarind, pilipili and lemon do the rest.</p>
+    <p>The menu is short on purpose. When the market has nothing worth cooking, a dish comes off.</p>
+    <dl><div><dt>Seats</dt><dd>24, plus four at the grill</dd></div><div><dt>Fuel</dt><dd>Charcoal only</dd></div><div><dt>Menu</dt><dd>Changes with the market</dd></div></dl></div>
+</div></section>
+
+<section class="menu" id="menu"><div class="wrap">
+  <div class="mhead">
+    <div><span class="eyebrow">Menu · prices in KES</span><h2>Tap a dish to<br><em>build your table</em></h2></div>
+    <div class="chips" id="chips" role="group" aria-label="Dietary filter">
+      <button class="chip" aria-pressed="true" data-d="all">Everything</button>
+      <button class="chip" aria-pressed="false" data-d="v">Vegetarian</button>
+      <button class="chip" aria-pressed="false" data-d="vg">Vegan</button></div>
+  </div>
+  <div class="tabs" id="tabs" role="tablist" style="margin-bottom:.8rem"></div>
+  <div class="mgrid">
+    <div id="list" aria-live="polite"></div>
+    <aside class="table" aria-label="Your table">
+      <h3>Your table</h3><div id="order"></div>
+    </aside>
+  </div>
+</div></section>
+
+<section id="hours"><div class="wrap hours">
+  <div class="rv"><span class="eyebrow">Hours</span><h2>Come <em>hungry.</em></h2>
+    <address>Makaa<br>Kilimani, Nairobi<br>Walk-ins welcome at the grill counter when seats are free.</address></div>
+  <ul class="rv" id="hlist"></ul>
+</div></section>
+
+<section class="reserve" id="reserve"><div class="wrap rgrid">
+  <div class="rv"><span class="eyebrow">Reservations</span><h2>Keep a seat by <em>the fire.</em></h2>
+    <p style="max-width:38ch;margin-top:1.2rem">Pick a day and we’ll show the times that are open. Parties of nine or more, please call.</p>
+    <p class="hint" id="carry"></p></div>
+  <div class="rv"><form id="rf" novalidate>
+    <div class="row"><label>Date<input type="date" id="date" required></label>
+      <label>Guests<div class="step"><button type="button" id="gm" aria-label="Fewer guests">−</button><span id="gn" aria-live="polite">2</span><button type="button" id="gp" aria-label="More guests">+</button></div></label></div>
+    <div><label style="margin-bottom:.5rem">Time</label><div class="slots" id="slots"><span class="hint">Choose a date first.</span></div></div>
+    <div class="row"><label>Name<input id="nm" autocomplete="name" required></label><label>Phone<input id="ph" type="tel" autocomplete="tel" placeholder="07…" required></label></div>
+    <p class="hint err" id="err" role="alert"></p>
+    <button class="btn solid" type="submit">Request this table</button>
+  </form>
+  <div class="done" id="done" hidden></div></div>
+</div></section>
+</main>
+<footer><div class="wrap"><span>© Makaa · Kilimani, Nairobi</span><span>A concept site — bookings here aren’t sent anywhere.</span></div></footer>
+
+<script>
+const $=s=>document.querySelector(s),KES=n=>'KES '+n.toLocaleString('en-KE');
+/* ---------- data ---------- */
+const CATS={moto:'Moto',mboga:'Mboga',tamu:'Tamu',kinywaji:'Kinywaji'};
+const ITEMS=[
+{id:1,c:'moto',n:'Goat ribs',d:'Tamarind glaze, charred onion, kachumbari.',p:1850,h:2,t:[]},
+{id:2,c:'moto',n:'Whole tilapia',d:'Over coals with lemon and coconut pilipili.',p:2200,h:3,t:[]},
+{id:3,c:'moto',n:'Smoked oxtail',d:'Cooked twelve hours, finished on the grill, sukuma.',p:2400,h:1,t:[]},
+{id:4,c:'moto',n:'Kienyeji half chicken',d:'Brined overnight, brushed with pilipili ya kupaka.',p:1750,h:3,t:[]},
+{id:5,c:'moto',n:'Mushroom skewers',d:'Oyster mushrooms, pilipili butter, lime.',p:1100,h:2,t:['v']},
+{id:6,c:'mboga',n:'Charred sukuma',d:'Ginger, garlic, a little smoke.',p:450,h:0,t:['vg']},
+{id:7,c:'mboga',n:'Seared ugali',d:'Cut thick, crisp on the grill, soft inside.',p:300,h:0,t:['vg']},
+{id:8,c:'mboga',n:'Mango kachumbari',d:'Tomato, red onion, coriander, green mango.',p:400,h:1,t:['vg']},
+{id:9,c:'mboga',n:'Mukimo',d:'Peas, maize and potato, burnt butter.',p:550,h:0,t:['v']},
+{id:10,c:'mboga',n:'Pumpkin leaves & groundnut',d:'Slow-stewed, roasted peanut crumb.',p:500,h:0,t:['vg']},
+{id:11,c:'tamu',n:'Mandazi',d:'Cardamom custard for dipping.',p:650,h:0,t:['v']},
+{id:12,c:'tamu',n:'Burnt banana',d:'Tahini caramel, toasted sesame.',p:700,h:0,t:['v']},
+{id:13,c:'tamu',n:'Passion & coconut sorbet',d:'Nothing else in it.',p:600,h:0,t:['vg']},
+{id:14,c:'kinywaji',n:'Dawa',d:'Vodka, lime, smoked honey.',p:900,h:0,t:[]},
+{id:15,c:'kinywaji',n:'Chai masala',d:'Cardamom, ginger, whole milk.',p:350,h:0,t:['v']},
+{id:16,c:'kinywaji',n:'Tusker, cold',d:'500 ml.',p:450,h:0,t:['vg']},
+{id:17,c:'kinywaji',n:'Passion-lime cooler',d:'Pressed to order, no syrup.',p:400,h:0,t:['vg']}];
+const H={0:[[720,1020]],1:[],2:[[720,900],[1080,1350]],3:[[720,900],[1080,1350]],4:[[720,900],[1080,1350]],5:[[720,900],[1080,1410]],6:[[720,1020],[1080,1410]]};
+const DN=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+const hm=m=>String(Math.floor(m/60)).padStart(2,'0')+':'+String(m%60).padStart(2,'0');
+const fmtDay=d=>H[d].length?H[d].map(w=>hm(w[0])+'–'+hm(w[1])).join(' · '):'Closed';
+/* ---------- hours + status (Nairobi time) ---------- */
+function eat(){const f=new Intl.DateTimeFormat('en-GB',{timeZone:'Africa/Nairobi',weekday:'short',hour:'2-digit',minute:'2-digit',hour12:false,year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date()),g=t=>f.find(x=>x.type===t).value;
+  return{dow:['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].indexOf(g('weekday')),min:(+g('hour')%24)*60+ +g('minute'),iso:`${g('year')}-${g('month')}-${g('day')}`}}
+function status(){const{dow,min}=eat(),el=$('#status'),t=el.lastElementChild;
+  const w=H[dow].find(w=>min>=w[0]&&min<w[1]);
+  if(w){el.classList.add('open');t.textContent='Open now · until '+hm(w[1]);return}
+  el.classList.remove('open');
+  const nx=H[dow].find(w=>w[0]>min);if(nx){t.textContent='Closed · opens today at '+hm(nx[0]);return}
+  for(let i=1;i<=7;i++){const d=(dow+i)%7;if(H[d].length){t.textContent='Closed · opens '+(i===1?'tomorrow':DN[d])+' at '+hm(H[d][0][0]);return}}}
+function hoursList(){const{dow}=eat();$('#hlist').innerHTML=[2,3,4,5,6,0,1].map(d=>`<li class="${d===dow?'today':''}"><span>${DN[d]}</span><span>${fmtDay(d)}</span></li>`).join('')}
+/* ---------- menu + order ---------- */
+let cat='moto',diet='all',order=JSON.parse('{}');
+try{order=JSON.parse(localStorage.getItem('makaa-order')||'{}')}catch(e){}
+const save=()=>{try{localStorage.setItem('makaa-order',JSON.stringify(order))}catch(e){}};
+function tabs(){$('#tabs').innerHTML=Object.entries(CATS).map(([k,v])=>`<button class="tab" role="tab" aria-selected="${k===cat}" data-c="${k}">${v}</button>`).join('')}
+function list(){const items=ITEMS.filter(i=>i.c===cat&&(diet==='all'||(diet==='v'?i.t.length:i.t.includes('vg'))));
+  $('#list').innerHTML=items.length?items.map((i,x)=>`<div class="item" style="animation-delay:${x*45}ms"><h3>${i.n}${i.t.includes('vg')?'<span class="tag">Vegan</span>':i.t.includes('v')?'<span class="tag">Veg</span>':''}${i.h?`<span class="heat" title="Heat ${i.h} of 3">${[1,2,3].map(k=>`<b class="${k>i.h?'off':''}"></b>`).join('')}</span>`:''}</h3><span class="price">${KES(i.p)}</span><p>${i.d}</p><button class="add" data-a="${i.id}" aria-label="Add ${i.n}">+</button></div>`).join(''):'<p class="eyebrow" style="padding:2rem 0">Nothing here fits that filter today.</p>'}
+function renderOrder(){const ids=Object.keys(order).filter(k=>order[k]>0);let tot=0;
+  const rows=ids.map(k=>{const i=ITEMS.find(x=>x.id==k);tot+=i.p*order[k];return`<div class="line"><span>${i.n}</span><span class="q"><button data-m="${k}" aria-label="Remove one ${i.n}">−</button>${order[k]}<button data-a="${k}" aria-label="Add one ${i.n}">+</button></span><span>${KES(i.p*order[k])}</span></div>`}).join('');
+  $('#order').innerHTML=ids.length?`${rows}<div class="total"><span>Estimate</span><span>${KES(tot)}</span></div><a class="btn solid" href="#reserve" style="width:100%;text-align:center">Book this table</a><button class="link" data-clear>Clear</button>`:'<p class="empty">Nothing yet. Add a few dishes and take the list with you to the booking — you pay at the restaurant.</p>';
+  const n=ids.reduce((a,k)=>a+order[k],0);$('#carry').textContent=n?`${n} dish${n>1?'es':''} from your table will travel with this request.`:''}
+$('#tabs').onclick=e=>{const b=e.target.closest('.tab');if(b){cat=b.dataset.c;tabs();list()}};
+$('#chips').onclick=e=>{const b=e.target.closest('.chip');if(!b)return;diet=b.dataset.d;document.querySelectorAll('.chip').forEach(c=>c.setAttribute('aria-pressed',c===b));list()};
+document.addEventListener('click',e=>{const a=e.target.closest('[data-a]'),m=e.target.closest('[data-m]');
+  if(a){order[a.dataset.a]=(order[a.dataset.a]||0)+1}else if(m){order[m.dataset.m]=Math.max(0,order[m.dataset.m]-1)}else if(e.target.closest('[data-clear]')){order={}}else return;save();renderOrder()});
+/* ---------- reservation ---------- */
+let guests=2,slot='';const err=$('#err');
+$('#gm').onclick=()=>{guests=Math.max(1,guests-1);$('#gn').textContent=guests};
+$('#gp').onclick=()=>{guests=Math.min(8,guests+1);$('#gn').textContent=guests};
+function slots(){const v=$('#date').value,box=$('#slots');slot='';if(!v){box.innerHTML='<span class="hint">Choose a date first.</span>';return}
+  const d=new Date(v+'T12:00:00').getDay(),out=[];
+  H[d].forEach(w=>{for(let m=w[0];m<=w[1]-60;m+=30)out.push(m)});
+  box.innerHTML=out.length?out.map(m=>`<button type="button" class="slot" aria-pressed="false" data-s="${hm(m)}">${hm(m)}</button>`).join(''):`<span class="hint">We’re closed on ${DN[d]}s. Try another day.</span>`}
+$('#date').onchange=slots;
+$('#slots').onclick=e=>{const b=e.target.closest('.slot');if(!b)return;slot=b.dataset.s;document.querySelectorAll('.slot').forEach(s=>s.setAttribute('aria-pressed',s===b))};
+$('#rf').onsubmit=e=>{e.preventDefault();const nm=$('#nm').value.trim(),ph=$('#ph').value.replace(/[\s-]/g,''),dt=$('#date').value;
+  if(!dt)return err.textContent='Pick a date.';if(!slot)return err.textContent='Pick a time.';if(nm.length<2)return err.textContent='Add a name for the booking.';
+  if(!/^(\+?254|0)\d{9}$/.test(ph))return err.textContent='Enter a Kenyan phone number, like 0712 345 678.';
+  err.textContent='';const ref='MKA-'+Math.random().toString(36).slice(2,6).toUpperCase(),n=Object.values(order).reduce((a,b)=>a+b,0);
+  const when=new Date(dt+'T12:00:00').toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long'});
+  try{localStorage.setItem('makaa-booking',JSON.stringify({ref,dt,slot,guests,nm}))}catch(x){}
+  $('#rf').hidden=true;const D=$('#done');D.hidden=false;
+  D.innerHTML=`<h3>Thank you, ${nm.split(' ')[0]}.</h3><p>${guests} guest${guests>1?'s':''}, ${when}, ${slot}.${n?` ${n} dish${n>1?'es':''} noted for the kitchen.`:''}</p><p class="hint">Reference ${ref}. This is a concept site, so nothing was actually sent.</p><button class="btn" id="again" style="margin-top:1rem">Make another</button>`;
+  $('#again').onclick=()=>{$('#rf').hidden=false;D.hidden=true}};
+const today=eat().iso;$('#date').min=today;
+/* ---------- hero video (MotionSites free background) + embers ---------- */
+const v=$('#bgv');v.src='https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260701_083907_581a119a-89b7-4c9f-a6ef-560625e0086f.mp4';
+v.onerror=()=>v.remove();v.play&&v.play().catch(()=>{});
+const cv=$('#embers'),cx=cv.getContext('2d'),calm=matchMedia('(prefers-reduced-motion:reduce)').matches;let W,Hh,P=[],vis=true;
+function size(){W=cv.width=cv.offsetWidth;Hh=cv.height=cv.offsetHeight}size();addEventListener('resize',size);
+const mk=r=>({x:Math.random()*W,y:r?Math.random()*Hh:Hh+10,r:Math.random()*1.8+.4,vy:Math.random()*.7+.25,ph:Math.random()*6,a:Math.random()*.6+.3});
+for(let i=0;i<70;i++)P.push(mk(true));
+function tick(){if(vis){cx.clearRect(0,0,W,Hh);P.forEach((p,i)=>{p.y-=p.vy;p.x+=Math.sin(p.ph+=.012)*.4;if(p.y<-10)P[i]=mk(false);
+  const f=Math.min(1,p.y/Hh+.2);cx.fillStyle=`rgba(255,${120+p.r*40|0},50,${p.a*f})`;cx.beginPath();cx.arc(p.x,p.y,p.r,0,7);cx.fill()})}requestAnimationFrame(tick)}
+if(!calm)tick();
+new IntersectionObserver(e=>vis=e[0].isIntersecting).observe($('.hero'));
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}}),{threshold:.15});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+/* ---------- init ---------- */
+tabs();list();renderOrder();hoursList();status();setInterval(status,60000);
+</script>
+</body>
+</html>
